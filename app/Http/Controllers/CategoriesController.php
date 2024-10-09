@@ -63,7 +63,11 @@ class CategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Encontrar la categoría por su ID
+    $categoriess = Categorias::findOrFail($id);
+
+    // Retornar la vista de edición con la categoría
+    return view('categories.edit', compact('categoriess'));
     }
 
     /**
@@ -71,7 +75,22 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validar los datos del formulario
+    $request->validate([
+        'name' => 'required|max:255',
+        'descripcion' => 'required|max:255',
+    ]);
+
+    // Encontrar la categoría por su ID
+    $categoriess = Categorias::findOrFail($id);
+
+    // Actualizar los datos de la categoría
+    $categoriess->name = $request->input('name');
+    $categoriess->descripcion = $request->input('descripcion');
+    $categoriess->save(); // Guardar los cambios
+
+    // Redirigir con un mensaje de éxito
+    return redirect()->route('categories.index')->with('success', 'Categoría actualizada correctamente');
     }
 
     /**
