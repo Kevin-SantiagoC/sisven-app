@@ -18,8 +18,9 @@ return new class extends Migration
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->date('date');
             $table->unsignedBigInteger('pay_mode_id');
-            $table->foreign('pay_mode_id')->references('id')->on('paymode')->onDelete('cascade');
+            $table->foreign('pay_mode_id')->references('id')->on('paymodes')->onDelete('cascade');
             $table->timestamps();
+
         });
     }
 
