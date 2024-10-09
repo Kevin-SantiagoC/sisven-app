@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Categorias;
 use Illuminate\Http\Request;
-use Illiminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 
 
 class CategoriesController extends Controller
@@ -22,7 +22,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.new');
+
     }
 
     /**
@@ -30,7 +31,23 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+     
+         
+       
+        $request->validate([
+            'name' => 'required|string|max:64|unique:categories,name',
+            'descripcion' => 'nullable|string',
+        ]);
+
+        Categorias::create([
+            'name' => $request->name,
+            'descripcion' => $request->descripcion,
+        ]);
+
+        return redirect()->route('categories.index')->with('success', 'Categoría creada exitosamente.');
+
+        
     }
 
     /**
