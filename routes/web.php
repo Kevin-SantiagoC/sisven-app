@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/categories',[CategoriesController::class, 'index'])->name('categories.index');
     Route::post('/categories',[CategoriesController::class, 'store'])->name('categories.store');
     Route::get('/categories/create',[CategoriesController::class, 'create'])->name('categories.create');
+    Route::delete('/categories/{categories}',[CategoriesController::class, 'destroy'])->name('categories.destroy');
+
 
 });
 

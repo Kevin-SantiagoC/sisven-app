@@ -79,6 +79,17 @@ class CategoriesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
+
+    // Encontrar la categoría por su ID
+    $categoriess = Categorias::findOrFail($id);
+
+    // Eliminar la categoría
+    $categoriess->delete();
+
+    // Redirigir con un mensaje de éxito
+    return redirect()->route('categories.index')->with('success', 'Categoría eliminada correctamente');
+
+
     }
 }
