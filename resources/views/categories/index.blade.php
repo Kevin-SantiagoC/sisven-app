@@ -8,11 +8,32 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Listado de Categorias</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-
+    <div class="container">
+    <h1>Listado de Categorias</h1>
+    <table class="table">
+      <thead class="table table-dark table-sm">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Categories</th>
+          <th scope="col">Descripcion</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach ($categoriess as $categories)
+        <tr>
+          <th scope="row">{{$categories->id}}</th>
+          <td>{{$categories->name}}</td>
+          <td>{{$categories->descripcion}}</td>
+          <td><span>Actions</span></td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

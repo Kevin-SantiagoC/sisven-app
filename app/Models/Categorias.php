@@ -9,6 +9,6 @@ class Categorias extends Model
 {
     use HasFactory;
     protected $table ='categories';
-    protected $table ='id';
+   protected $primaryKey ='id';
     public $timestamps =false;
 }
